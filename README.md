@@ -1,51 +1,103 @@
 # QA Playwright Project
-
-This project contains automated UI tests using Playwright with Docker support.
-
+This repository contains automated UI tests for a critical E-commerce user journey using Playwright with Docker support.
+The objective of this project is to protect revenue-critical flows (authentication and purchase intent) while maintaining fast, stable, and maintainable automation.
 ---
 
 ## 🔧 Tech Stack
-- Playwright
+
+- Playwright (UI Automation)
 - TypeScript
+- Node.js
 - Docker
 - Docker Compose
 
 ---
 
-## 📦 Install Dependencies (Local)
+## 📌 Prerequisites
 
+Make sure the following tools are installed:
+
+- Node.js (v18+ recommended)
+- npm
+- Docker (optional, for containerized execution)
+
+Check versions:
+
+```bash
+node -v
+npm -v
+docker -v
+```
+## 📦 Installation
+Clone the repository:
+```bash
+git clone https://github.com/KaiwanGuyHiangha/qa-playwright.git
+cd qa-playwright
+```
+Install dependencies:
 ```bash
 npm install
-▶️ Run Tests Locally
+```
+Install Playwright browsers:
+```bash
+npx playwright install
+```
+## ▶️ Run Tests Locally
+Run all tests:
+```bash
 npx playwright test
-🐳 Run Tests with Docker
+```
+Run in headed mode:
+```bash
+npx playwright test --headed
+```
+Run specific test file:
+```bash
+npx playwright test tests/login.spec.ts
+```
+## 🐳 Run Tests with Docker
+Build and run tests inside Docker:
+```bash
 cd docker
 docker compose up --build
-✅ Test Cases
-Login - happy path
+```
+## 📊 Parallel Execution
+Playwright runs tests in parallel by default.
 
-Add item to cart and verify
-
-📊 Parallel Execution
-Tests are executed using multiple workers for faster execution.
-
-
----
-
-# 🔥 จุดที่แก้ให้
-
-- ปิด ```bash ให้ครบ
-- จัดหัวข้อ markdown ให้ถูกต้อง
-- ทำ bullet list ให้ดู professional
-- แยก section ชัดเจน
-
----
-
-# ✅ หลังจากแก้เสร็จ
-
-รัน:
-
+To specify the number of workers:
 ```bash
-git add README.md
-git commit -m "Improve README formatting"
-git push
+npx playwright test --workers=4
+```
+Configuration can be adjusted in:
+```bash
+playwright.config.ts
+```
+## ✅ Automated Scenarios
+- Login – happy path
+- Login – invalid credentials
+- Search and open product detail
+- Add item to cart and verify:
+  - Product name
+  - Price
+  - Quantity
+- Cart persistence after page refresh
+
+## 📁 Project Structure
+```bash
+qa-playwright/
+│
+├── tests/
+│   ├── login.spec.ts
+│   └── cart.spec.ts
+│
+├── playwright.config.ts
+├── package.json
+└── docker/
+```
+
+## 🎯 Automation Approach
+- Focused on business-critical user journeys
+- Prioritized stability over maximum coverage
+- Designed selectors to reduce flakiness
+- Ensured maintainability and readability
+
