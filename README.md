@@ -16,32 +16,36 @@ This project contains automated UI tests using Playwright with Docker support.
 
 ```bash
 npm install
-
 ▶️ Run Tests Locally
 npx playwright test
-
 🐳 Run Tests with Docker
 cd docker
 docker compose up --build
-
 ✅ Test Cases
-
 Login - happy path
 
 Add item to cart and verify
 
 📊 Parallel Execution
-
 Tests are executed using multiple workers for faster execution.
 
 
-กด Save ✔
+---
+
+# 🔥 จุดที่แก้ให้
+
+- ปิด ```bash ให้ครบ
+- จัดหัวข้อ markdown ให้ถูกต้อง
+- ทำ bullet list ให้ดู professional
+- แยก section ชัดเจน
 
 ---
 
-# ✅ STEP 2 — เช็คสถานะ git
+# ✅ หลังจากแก้เสร็จ
 
-ใน Terminal ที่ root project พิมพ์:
+รัน:
 
 ```bash
-git status
+git add README.md
+git commit -m "Improve README formatting"
+git push
